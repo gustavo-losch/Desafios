@@ -1,4 +1,8 @@
-package ClubedeAlgoritmos.CodigoReal;
+package ClubeDeAlgoritmos.CodigoReal;
+
+/*
+ * Link do desafio: "https://cdass.vercel.app/problemas/20"
+ */
 
 import java.util.Scanner;
 import java.io.FileReader;
