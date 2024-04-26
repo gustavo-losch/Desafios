@@ -49,7 +49,7 @@ public class VerbosRegulares{
                     System.out.println(radical+"istes");
                     System.out.println(radical+"iram");
                 }
-            ;
+            break;
                 
             case 2:
                 if(conjugS.equals("a")){
@@ -78,7 +78,7 @@ public class VerbosRegulares{
                     System.out.println(radical+"is");
                     System.out.println(radical+"em");
                 }
-            ;
+            break;
 
             case 3:
                 if(conjugS.equals("a")){
@@ -106,8 +106,8 @@ public class VerbosRegulares{
                     System.out.println(radical+"ireis");
                     System.out.println(radical+"irão");
                 }
-        ;
-                
+            break;
         }
+        t.close();
     }
 }

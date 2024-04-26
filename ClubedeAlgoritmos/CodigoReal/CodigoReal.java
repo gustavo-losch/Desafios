@@ -86,6 +86,7 @@ public class CodigoReal {
             caractSpas = "";
         }
         System.out.println(somalinhas);
+        reader.close();
     }
 }
 
