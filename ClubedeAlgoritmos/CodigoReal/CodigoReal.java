@@ -10,83 +10,90 @@ import java.io.FileNotFoundException;
 
 public class CodigoReal {
     public static void main(String args[]) throws FileNotFoundException {
-        Scanner reader = new Scanner(new FileReader("C:\\Users\\Gustavo Losch\\Documents\\Repositórios\\Desafios\\ClubedeAlgoritmos\\CodigoReal\\input.txt"));
+        Scanner reader = new Scanner(new FileReader("C:\\Users\\User\\Desktop\\Gustavo\\Repositórios\\Desafios\\ClubeDeAlgoritmos\\CodigoReal\\input.txt"));
         String[] vet = new String[77000];
-        
-        int linha = 0; int somalinhas = 0;
-        String caractS; String caractSpas = "";
 
-        for(int i=0; reader.hasNextLine(); i++){
+        int linha = 0; int somalinhas = 0;
+        String caractSfut = ""; String caractS = "";
+
+        for (int i = 0; reader.hasNextLine(); i++) {
             vet[i] = reader.nextLine();
 
-            for (int j = vet[i].length()-1 ; j>=0 ; j--){
+            for(int j=0; j<vet[i].length(); j++) {
                 char caractC = vet[i].charAt(j);
                 caractS = Character.toString(caractC);
 
-                if (j!=0) {
-                    char caractCpas = vet[i].charAt(j-1);
-                    caractSpas = Character.toString(caractCpas);
+                if(j<vet[i].length()-1) {
+                    char caractCfut = vet[i].charAt(j+1);
+                    caractSfut = Character.toString(caractCfut);
                 }
 
                 if(caractS.equals("!")) {
-                    linha += 1;
-                }
-
-                else if (caractS.equals("@")){
-                    if (caractSpas.equals("!")) {
+                    if(caractSfut.equals("@")) {
                         linha += 4;
-                        j--;
+                        j++;
                     }
-                    else linha += 5;
-                }
-
-                else if (caractS.equals("#")){
-                    if (caractSpas.equals("!")) {
+                    else if(caractSfut.equals("#")) {
                         linha += 9;
-                        j--;
+                        j++;
                     }
-                    else linha += 10;
+                    else {
+                        linha += 1;
+                    }
                 }
 
-                else if (caractS.equals("$")){
-                    if (caractSpas.equals("#")) {
+                if(caractS.equals("@")){
+                    linha += 5;
+                }
+
+                if (caractS.equals("#")) {
+                    if(caractSfut.equals("$")) {
                         linha += 40;
-                        j--;
+                        j++;
                     }
-                    else linha += 50;
-                }
-
-                else if (caractS.equals("%")){
-                    if (caractSpas.equals("#")) {
+                    else if (caractSfut.equals("%")) {
                         linha += 90;
-                        j--;
+                        j++;
                     }
-                    else linha += 100;
+                    else {
+                        linha += 10;
+                    }
                 }
 
-                else if (caractS.equals("&")){
-                    if (caractSpas.equals("%")) {
+                if (caractS.equals("$")) {
+                    linha += 50;
+                }
+                
+                if (caractS.equals("%")) {
+                    if(caractSfut.equals("&")) {
                         linha += 400;
-                        j--;
+                        j++;
                     }
-                    else linha += 500;
+                    else if (caractSfut.equals("*")) {
+                        linha += 900;
+                        j++;
+                    }
+                    else {
+                        linha += 100;
+                    }
+                }
+                
+                if (caractS.equals("&")) {
+                    linha += 500;
+                }
+                
+                if (caractS.equals("*")) {
+                    linha += 1000;
                 }
 
-                else if (caractS.equals("*")){
-                    if (caractSpas.equals("%")) {
-                        linha += 900;
-                        j--;
-                    }
-                    else linha += 1000;
-                }
             }
-            //System.out.println(linha); 
+
             somalinhas += linha;
             linha = 0;
-            caractSpas = "";
+            caractSfut = "";
+
         }
         System.out.println(somalinhas);
         reader.close();
     }
 }
-
